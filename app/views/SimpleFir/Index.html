@@ -1,0 +1,49 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<header class="hero-unit" style="background-color:#A9F16C">
+  <div class="container">
+    <div class="row">
+      <div class="hero-text">
+        <h1>Simulating FIR</h1>
+        <p>Took {{.sim.Duration}}</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<form action="/SimpleFir/SetInput">
+  <input type="text" name="input" value="{{.sim.Input}}">
+  <input type="submit">
+</form>
+
+<!-- <h2>Values</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <td>X</td>
+      <td>Y</td>
+      <td>Taps</td>
+    </tr>
+  </thead>
+  <tbody>
+  {{range .sim.Data}}
+  <tr>
+    <td>{{.X}}</td>
+    <td>{{.Y}}</td>
+    <td>{{.Tap}}</td>
+  </tr>
+  {{end}}
+  </tbody>
+</table>
+ -->
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}
