@@ -1,0 +1,50 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<header class="hero-unit" style="background-color:#A9F16C">
+  <div class="container">
+    <div class="row">
+      <div class="hero-text">
+        <h1>Simulating FIR</h1>
+        <p>Took {{.sim.Duration}}</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<form action="/SimpleFir/SetSinInput">
+  <fieldset>
+    <legend>Sinus Input</legend>
+    
+    <div class="form-group">
+      <label for="amp">Amplitude</label>
+      <input type="text" id="amp" name="amp" placeholder="3">
+    </div>
+    
+    <div class="form-group">
+      <label for="freq">Frequency</label>
+      <input type="text" id="freq" name="freq" placeholder="1/2">
+    </div>
+        <div class="form-group">
+      <label for="valuecnt"># of Values</label>
+      <input type="text" id="valuecnt" name="valuecnt" placeholder="100">
+    </div>
+        <div class="form-group">
+      <label for="noise">Noise</label>
+      <input type="text" id="noise" name="noise" placeholder="0">
+    </div>
+  
+  <button class="btn btn-default" type="submit">Submit</button>
+  </fieldset>
+</form>
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}

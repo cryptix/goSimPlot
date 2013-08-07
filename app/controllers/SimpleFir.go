@@ -4,6 +4,8 @@ import (
 	"github.com/cryptix/goFir"
 	"github.com/robfig/revel"
 	"github.com/robfig/revel/cache"
+	"math"
+	"math/rand"
 	"strconv"
 	"strings"
 )
@@ -36,12 +38,26 @@ func (c SimpleFir) SetInput(input string) revel.Result {
 			}
 			newInts = append(newInts, i)
 		}
-		// revel.INFO.Printf("New Input:%v\n", newInts)
 
 		go cache.Set("simulation", goFir.RunSimulation(newInts), cache.DEFAULT)
 	} else {
 		c.Flash.Error("Invalid input format.")
 	}
+	return c.Redirect(SimpleFir.Index)
+}
+
+func (c SimpleFir) SinInput() revel.Result {
+	return c.Render()
+}
+
+func (c SimpleFir) SetSinInput(amp, freq float64, valuecnt, noise int) revel.Result {
+	arr := make([]int, valuecnt)
+	for i := 0; i < valuecnt; i++ {
+		arr[i] = int(amp*math.Sin(math.Pi/freq*float64(i))) + rand.Intn(noise)
+	}
+
+	go cache.Set("simulation", goFir.RunSimulation(arr), cache.DEFAULT)
+
 	return c.Redirect(SimpleFir.Index)
 }
 

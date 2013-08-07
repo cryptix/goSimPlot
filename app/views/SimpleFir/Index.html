@@ -12,31 +12,19 @@
   </div>
 </header>
 
-<form action="/SimpleFir/SetInput">
-  <input type="text" name="input" value="{{.sim.Input}}">
-  <input type="submit">
-</form>
 
-<!-- <h2>Values</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <td>X</td>
-      <td>Y</td>
-      <td>Taps</td>
-    </tr>
-  </thead>
-  <tbody>
-  {{range .sim.Data}}
-  <tr>
-    <td>{{.X}}</td>
-    <td>{{.Y}}</td>
-    <td>{{.Tap}}</td>
-  </tr>
-  {{end}}
-  </tbody>
-</table>
- -->
+<form action="/SimpleFir/SetInput">
+  <fieldset>
+    <legend>Raw Input</legend>
+    <div class="form-group">
+      <label for="rawInput">Values</label>
+      <input type="text" id="rawInput" name="input" value="{{.sim.Input}}" placeholder="[0 1 2 3]">
+    </div>
+
+  <button class="btn btn-default" type="submit">Submit</button>
+  </fieldset>
+
+</form>
 
 <div class="container">
   <div class="row">
